@@ -1,0 +1,7 @@
+---
+apt_path: /usr/bin/apt
+
+yum_path: /usr/bin/yum
+
+# default package manager is yum
+package_manager_path: {{ yum_path }}

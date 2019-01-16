@@ -1,0 +1,27 @@
+---
+- name: Check that the apt package manager path exists
+  stat:
+    path: "{{ apt_path }}"
+  register: stat_result
+  when: ansible_os_family == "Debian"
+
+- name: Check that the yum package manager path exists
+  stat:
+    path: "{{ yum_path }}"
+  register: stat_result
+  when: ansible_os_family == "RedHat"
+
+- name: Fail when the package manager path couldn't be found
+  fail:
+    msg: "The package manager path couldn't be found."
+  when: stat_result.stat.exists == False
+
+- name: "Set up package manager (apt)"
+  set_fact:
+    package_manager_path: "{{ apt_path }}"
+  when: ansible_os_family == "Debian"
+
+- name: "Set up package manager (yum)"
+  set_fact:
+    package_manager_path: "{{ yum_path }}"
+  when: ansible_os_family == "RedHat"

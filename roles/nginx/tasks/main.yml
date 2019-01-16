@@ -1,0 +1,6 @@
+---
+- import_tasks: package-manager/setup-package-manager.yml
+
+- name: "Install NGINX using correct execution path"
+  command: "{{ package_manager_path }} -y install nginx"
+  notify: "Start NGINX"
