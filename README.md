@@ -1,5 +1,4 @@
-# devops-exercise
-
+# devops-exercise-part-1
 Part 1 – Ansible Roles
 Create an Ansible Role which installs Nginx.
 Criteria:

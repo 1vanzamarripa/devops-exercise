@@ -1,5 +1,9 @@
----
+\---
 - import_tasks: package-manager/setup-package-manager.yml
+
+- name: "Install epel-release"
+  command: "{{ package_manager_path }} -y install epel-release"
+  when: ansible_os_family == "RedHat"
 
 - name: "Install NGINX using correct execution path"
   command: "{{ package_manager_path }} -y install nginx"
