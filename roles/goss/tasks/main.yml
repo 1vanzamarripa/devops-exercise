@@ -1,0 +1,15 @@
+---
+- name: Download goss
+  get_url:
+    url: https://goss.rocks/install
+    dest: /tmp/install
+    validate_certs: no
+
+- name: Install goss
+  command: sh /tmp/install
+
+- name: Create test for nginx
+  command: goss autoadd nginx
+
+- name: Run test for nginx
+  command: goss validate
